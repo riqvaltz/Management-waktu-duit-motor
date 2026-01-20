@@ -1,0 +1,65 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+@keyframes mm-blob {
+    0% { transform: translate3d(-6%, -4%, 0) scale(1); }
+    33% { transform: translate3d(6%, 2%, 0) scale(1.05); }
+    66% { transform: translate3d(-2%, 6%, 0) scale(0.98); }
+    100% { transform: translate3d(-6%, -4%, 0) scale(1); }
+}
+
+@keyframes mm-scan {
+    0% { transform: translateY(-10%); }
+    100% { transform: translateY(10%); }
+}
+
+.mm-shimmer {
+    background: linear-gradient(120deg, rgba(255,255,255,0) 10%, rgba(255,255,255,0.14) 30%, rgba(255,255,255,0) 55%);
+    background-size: 200% 100%;
+    animation: mm-shimmer 6s ease-in-out infinite;
+}
+
+@keyframes mm-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.mm-blob {
+    animation: mm-blob 18s ease-in-out infinite;
+    will-change: transform;
+}
+
+.mm-blob-slow {
+    animation-duration: 26s;
+}
+
+.mm-scanlines {
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.06) 0px,
+        rgba(255,255,255,0.06) 1px,
+        rgba(0,0,0,0) 3px,
+        rgba(0,0,0,0) 6px
+    );
+    animation: mm-scan 8s linear infinite;
+    opacity: 0.10;
+    mix-blend-mode: overlay;
+}
+
+.mm-elevate {
+    transform: translateZ(0);
+    transition: transform 240ms ease, box-shadow 240ms ease;
+}
+
+.mm-elevate:hover {
+    transform: translate3d(0, -2px, 0);
+}
