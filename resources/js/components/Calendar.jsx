@@ -19,28 +19,28 @@ export default function Calendar({ selectedDate, onDateSelect }) {
     return (
         <div className="select-none">
             <div className="flex justify-between items-center mb-4">
-                <button onClick={prevMonth} className="p-2 hover:bg-white/5 rounded-full text-slate-200">
+                <button onClick={prevMonth} className="p-2 rounded-md border-2 border-black/60 bg-black/25 text-white/90 hover:bg-black/35">
                     <ChevronLeftIcon className="w-5 h-5" />
                 </button>
-                <h2 className="text-lg font-extrabold text-slate-100 tracking-tight">{format(currentMonth, 'MMMM yyyy')}</h2>
-                <button onClick={nextMonth} className="p-2 hover:bg-white/5 rounded-full text-slate-200">
+                <h2 className="text-lg font-black mc-title tracking-tight">{format(currentMonth, 'MMMM yyyy')}</h2>
+                <button onClick={nextMonth} className="p-2 rounded-md border-2 border-black/60 bg-black/25 text-white/90 hover:bg-black/35">
                     <ChevronRightIcon className="w-5 h-5" />
                 </button>
             </div>
             <div className="grid grid-cols-7 gap-1 text-center text-sm">
                 {['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map(day => (
-                    <div key={day} className="font-semibold text-slate-400 py-2">{day}</div>
+                    <div key={day} className="font-black mc-muted py-2">{day}</div>
                 ))}
                 {days.map(day => (
                     <button
                         key={day.toString()}
                         onClick={() => onDateSelect(day)}
                         className={clsx(
-                            "p-2 rounded-lg transition-colors",
-                            !isSameMonth(day, currentMonth) && "text-slate-500",
+                            "p-2 rounded-md border-2 border-black/50 transition-colors",
+                            !isSameMonth(day, currentMonth) && "text-white/50 bg-black/10",
                             isSameDay(day, selectedDate)
-                                ? "bg-gradient-to-br from-cyan-600 to-blue-700 text-white hover:from-cyan-500 hover:to-blue-600 font-bold shadow"
-                                : "text-slate-200 hover:bg-white/5"
+                                ? "bg-yellow-400 text-black hover:bg-yellow-300 font-black shadow-[0_4px_0_rgba(0,0,0,0.35)]"
+                                : "text-white/90 bg-black/20 hover:bg-black/30"
                         )}
                     >
                         {format(day, 'd')}

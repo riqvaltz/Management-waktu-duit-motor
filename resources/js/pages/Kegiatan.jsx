@@ -154,7 +154,7 @@ export default function Kegiatan() {
             right={
                 <button
                     onClick={openCreate}
-                    className="px-4 py-2 rounded-2xl text-white bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-500 hover:to-blue-600 shadow transition-transform active:scale-[0.98]"
+                    className="mc-btn mc-btn-blue"
                 >
                     + Tambah Kegiatan
                 </button>
@@ -166,10 +166,10 @@ export default function Kegiatan() {
                     animate={{ x: 0, opacity: 1 }}
                     className="xl:col-span-4 space-y-6"
                 >
-                    <div className="mm-elevate rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_-60px_rgba(0,0,0,0.9)] overflow-hidden">
-                        <div className="p-5 border-b border-white/10">
-                            <div className="text-sm font-bold text-slate-100">Kalender</div>
-                            <div className="text-xs text-slate-400 mt-1">{format(selectedDate, 'd MMMM yyyy')}</div>
+                    <div className="mm-elevate mc-panel overflow-hidden">
+                        <div className="p-5 border-b border-black/50">
+                            <div className="text-sm font-black mc-title">Kalender</div>
+                            <div className="text-xs mc-muted mt-1">{format(selectedDate, 'd MMMM yyyy')}</div>
                         </div>
                         <div className="p-4">
                             <Calendar selectedDate={selectedDate} onDateSelect={setSelectedDate} />
@@ -188,29 +188,29 @@ export default function Kegiatan() {
                     animate={{ x: 0, opacity: 1 }}
                     className="xl:col-span-8"
                 >
-                    <div className="mm-elevate rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_-60px_rgba(0,0,0,0.9)] overflow-hidden">
-                        <div className="p-5 border-b border-white/10 flex items-center justify-between gap-4 flex-wrap">
+                    <div className="mm-elevate mc-panel overflow-hidden">
+                        <div className="p-5 border-b border-black/50 flex items-center justify-between gap-4 flex-wrap">
                             <div className="min-w-0">
-                                <div className="text-sm font-bold text-slate-100">Jadwal 24 Jam</div>
-                                <div className="text-xs text-slate-400 mt-1">{sorted.length} kegiatan</div>
+                                <div className="text-sm font-black mc-title">Jadwal 24 Jam</div>
+                                <div className="text-xs mc-muted mt-1">{sorted.length} kegiatan</div>
                             </div>
-                            <div className="text-xs text-slate-400">Centang untuk selesai, lewat jam jadi merah.</div>
+                            <div className="text-xs mc-muted">Centang untuk selesai, lewat jam jadi merah.</div>
                         </div>
 
                         {loading ? (
                             <div className="flex justify-center items-center h-64">
-                                <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-cyan-400"></div>
+                                <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-white/80"></div>
                             </div>
                         ) : (
-                            <div className="divide-y divide-white/10">
+                            <div className="divide-y divide-black/40">
                                 {hours.map(h => (
                                     <div key={h} className="flex gap-4 px-5 py-4">
-                                        <div className="w-16 shrink-0 text-sm text-slate-300 pt-1">
+                                        <div className="w-16 shrink-0 text-sm text-white/85 pt-1">
                                             {String(h).padStart(2, '0')}:00
                                         </div>
                                         <div className="flex-1 space-y-2">
                                             {activitiesByHour.get(h).length === 0 ? (
-                                                <div className="text-sm text-slate-500 select-none">-</div>
+                                                <div className="text-sm text-white/50 select-none">-</div>
                                             ) : (
                                                 activitiesByHour.get(h).map(a => (
                                                     (() => {
@@ -218,14 +218,14 @@ export default function Kegiatan() {
                                                         const checked = Boolean(a.completed_at);
                                                         const badgeText = status === 'done' ? 'Selesai' : status === 'missed' ? 'Tidak dikerjakan' : 'Belum';
                                                         const badgeClass = status === 'done'
-                                                            ? 'bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-700/40'
+                                                            ? 'bg-emerald-500/30 text-emerald-100 border-2 border-black/60'
                                                             : status === 'missed'
-                                                                ? 'bg-rose-500/15 text-rose-300 ring-1 ring-rose-700/40'
-                                                                : 'bg-slate-500/15 text-slate-300 ring-1 ring-slate-700/40';
+                                                                ? 'bg-rose-500/30 text-rose-100 border-2 border-black/60'
+                                                                : 'bg-yellow-300 text-black border-2 border-black/60';
                                                         return (
                                                             <div
                                                                 key={`${a.id}-${h}`}
-                                                                className="flex items-start justify-between gap-3 p-3 rounded-2xl ring-1 ring-white/10 bg-black/25 hover:bg-black/35 transition-colors"
+                                                                className="flex items-start justify-between gap-3 p-3 mc-panel-inner transition-colors hover:brightness-110"
                                                             >
                                                                 <div className="min-w-0 flex gap-3">
                                                                     <label className="pt-1">
@@ -238,12 +238,12 @@ export default function Kegiatan() {
                                                                     </label>
                                                                     <div>
                                                                         <div className="flex items-center gap-2 flex-wrap">
-                                                                            <span className={clsx("text-sm font-semibold", checked ? "text-slate-300 line-through" : "text-slate-100")}>{a.title}</span>
-                                                                            <span className="text-xs text-slate-400">{String(a.start_time).slice(0, 5)}–{String(a.end_time).slice(0, 5)}</span>
-                                                                            <span className={clsx("text-[11px] px-2 py-0.5 rounded-full", badgeClass)}>{badgeText}</span>
+                                                                            <span className={clsx("text-sm font-black", checked ? "mc-muted line-through" : "mc-title")}>{a.title}</span>
+                                                                            <span className="text-xs mc-muted">{String(a.start_time).slice(0, 5)}–{String(a.end_time).slice(0, 5)}</span>
+                                                                            <span className={clsx("text-[11px] px-2 py-0.5 rounded-md font-black whitespace-nowrap", badgeClass)}>{badgeText}</span>
                                                                         </div>
-                                                                        {a.notes ? <div className="text-xs text-slate-400 mt-1 break-words">{a.notes}</div> : null}
-                                                                        <div className="text-[11px] text-slate-500 mt-1">
+                                                                        {a.notes ? <div className="text-xs mc-muted mt-1 break-words">{a.notes}</div> : null}
+                                                                        <div className="text-[11px] mc-muted mt-1">
                                                                             Update: {formatWIB(a.updated_at || a.created_at)}
                                                                         </div>
                                                                     </div>
@@ -251,13 +251,13 @@ export default function Kegiatan() {
                                                                 <div className="flex items-center gap-2">
                                                                     <button
                                                                         onClick={() => openEdit(a)}
-                                                                        className="text-slate-300 hover:text-cyan-300 p-2 rounded-xl hover:bg-white/5"
+                                                                        className="text-white/80 hover:text-white p-2 rounded-md border-2 border-black/50 bg-black/15 hover:bg-black/25"
                                                                     >
                                                                         <PencilSquareIcon className="w-5 h-5" />
                                                                     </button>
                                                                     <button
                                                                         onClick={() => handleDelete(a.id)}
-                                                                        className="text-slate-300 hover:text-rose-300 p-2 rounded-xl hover:bg-white/5"
+                                                                        className="text-white/80 hover:text-white p-2 rounded-md border-2 border-black/50 bg-black/15 hover:bg-black/25"
                                                                     >
                                                                         <TrashIcon className="w-5 h-5" />
                                                                     </button>

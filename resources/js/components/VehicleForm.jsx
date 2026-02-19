@@ -23,19 +23,19 @@ export default function VehicleForm({ isOpen, onClose, onSubmit, initialValue })
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity">
-            <div className="w-full max-w-lg p-6 rounded-2xl shadow-xl ring-1 ring-slate-800 bg-slate-900/70 transform transition-all animate-in fade-in zoom-in duration-200">
-                <h2 className="text-xl font-bold mb-4 text-slate-100">{initialValue?.id ? 'Edit Kendaraan' : 'Tambah Kendaraan'}</h2>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 backdrop-blur-[1px] transition-opacity">
+            <div className="w-full max-w-lg p-6 mc-panel transform transition-all animate-in fade-in zoom-in duration-200">
+                <h2 className="text-xl font-black mb-4 mc-title">{initialValue?.id ? 'Edit Kendaraan' : 'Tambah Kendaraan'}</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
-                            <label className="block text-sm font-medium text-slate-300">Merek</label>
+                            <label className="block text-sm font-black mc-muted">Merek</label>
                             <input
                                 list="brandList"
                                 name="brand"
                                 required
                                 defaultValue={initialValue?.brand || 'Honda'}
-                                className="mt-1 block w-full rounded-md border border-slate-700 bg-slate-800 text-slate-100 shadow-sm p-2 focus:border-cyan-500 focus:ring-cyan-500 outline-none"
+                                className="mt-1 mc-input"
                             />
                             <datalist id="brandList">
                                 <option value="Honda" />
@@ -49,12 +49,12 @@ export default function VehicleForm({ isOpen, onClose, onSubmit, initialValue })
                             </datalist>
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-slate-300">Tahun</label>
+                            <label className="block text-sm font-black mc-muted">Tahun</label>
                             <select
                                 name="year"
                                 required
                                 defaultValue={initialValue?.year || 2025}
-                                className="mt-1 block w-full rounded-md border border-slate-700 bg-slate-800 text-slate-100 shadow-sm p-2 focus:border-cyan-500 focus:ring-cyan-500 outline-none"
+                                className="mt-1 mc-input"
                             >
                                 {years.map(y => <option key={y} value={y}>{y}</option>)}
                             </select>
@@ -62,41 +62,41 @@ export default function VehicleForm({ isOpen, onClose, onSubmit, initialValue })
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-slate-300">Nama/Model</label>
+                        <label className="block text-sm font-black mc-muted">Nama/Model</label>
                         <input
                             name="model"
                             required
                             defaultValue={initialValue?.model || ''}
                             placeholder="Contoh: Vario 125 / Brio"
-                            className="mt-1 block w-full rounded-md border border-slate-700 bg-slate-800 text-slate-100 shadow-sm p-2 focus:border-cyan-500 focus:ring-cyan-500 outline-none"
+                            className="mt-1 mc-input"
                         />
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                         <div>
-                            <label className="block text-sm font-medium text-slate-300">Interval Oli (KM)</label>
+                            <label className="block text-sm font-black mc-muted">Interval Oli (KM)</label>
                             <input
                                 type="number"
                                 name="oil_interval_km"
                                 min="500"
                                 step="100"
                                 defaultValue={initialValue?.oil_interval_km ?? 5000}
-                                className="mt-1 block w-full rounded-md border border-slate-700 bg-slate-800 text-slate-100 shadow-sm p-2 focus:border-cyan-500 focus:ring-cyan-500 outline-none"
+                                className="mt-1 mc-input"
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-slate-300">KM Saat Ini</label>
+                            <label className="block text-sm font-black mc-muted">KM Saat Ini</label>
                             <input
                                 type="number"
                                 name="current_km"
                                 min="0"
                                 step="1"
                                 defaultValue={initialValue?.current_km ?? 0}
-                                className="mt-1 block w-full rounded-md border border-slate-700 bg-slate-800 text-slate-100 shadow-sm p-2 focus:border-cyan-500 focus:ring-cyan-500 outline-none"
+                                className="mt-1 mc-input"
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-slate-300">KM Ganti Oli Terakhir</label>
+                            <label className="block text-sm font-black mc-muted">KM Ganti Oli Terakhir</label>
                             <input
                                 type="number"
                                 name="last_oil_change_km"
@@ -104,16 +104,16 @@ export default function VehicleForm({ isOpen, onClose, onSubmit, initialValue })
                                 step="1"
                                 defaultValue={initialValue?.last_oil_change_km ?? ''}
                                 placeholder="kosongkan = sama dengan KM saat ini"
-                                className="mt-1 block w-full rounded-md border border-slate-700 bg-slate-800 text-slate-100 shadow-sm p-2 focus:border-cyan-500 focus:ring-cyan-500 outline-none"
+                                className="mt-1 mc-input"
                             />
                         </div>
                     </div>
 
                     <div className="flex justify-end gap-2 mt-6">
-                        <button type="button" onClick={onClose} className="px-4 py-2 text-slate-300 hover:bg-slate-800 rounded-md transition-colors">
+                        <button type="button" onClick={onClose} className="mc-btn">
                             Batal
                         </button>
-                        <button type="submit" className="px-4 py-2 text-white rounded-md bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-500 hover:to-blue-600 transition-colors">
+                        <button type="submit" className="mc-btn mc-btn-blue">
                             Simpan
                         </button>
                     </div>
@@ -122,4 +122,3 @@ export default function VehicleForm({ isOpen, onClose, onSubmit, initialValue })
         </div>
     );
 }
-

@@ -7,16 +7,16 @@ export default function TopNav({ user, accent, setAccent, onLogout }) {
     const path = location.pathname;
 
     const linkClass = (to) => clsx(
-        "px-3 py-2 rounded-lg text-sm font-semibold transition-colors",
-        path === to ? "bg-slate-800 text-slate-100" : "text-slate-300 hover:bg-slate-800/70 hover:text-slate-100"
+        "px-3 py-2 rounded-md text-sm font-black transition-colors border-2",
+        path === to ? "bg-black/25 border-black/60 mc-title" : "text-white/85 bg-black/15 border-black/40 hover:brightness-110"
     );
 
     return (
-        <nav className="sticky top-0 z-10 backdrop-blur-md bg-white/5 border-b border-slate-800">
+        <nav className="sticky top-0 z-10 backdrop-blur-md bg-black/10 border-b border-black/40">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16">
                 <div className="flex justify-between h-16 gap-4">
                     <div className="flex items-center gap-4">
-                        <Link to="/keuangan" className="text-2xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-purple-500">
+                        <Link to="/keuangan" className="text-2xl font-black mc-title tracking-tight">
                             MoneyM
                         </Link>
                         <div className="hidden sm:flex items-center gap-1">
@@ -26,12 +26,12 @@ export default function TopNav({ user, accent, setAccent, onLogout }) {
                         </div>
                     </div>
                     <div className="flex items-center space-x-3">
-                        <span className="hidden md:inline text-slate-300 font-medium">Hi, {user?.name}</span>
+                        <span className="hidden md:inline mc-muted font-black">Hi, {user?.name}</span>
                         {setAccent ? (
                             <select
                                 value={accent}
                                 onChange={(e) => setAccent(e.target.value)}
-                                className="px-3 py-2 rounded-lg border border-slate-700 bg-slate-800 text-slate-100"
+                                className="px-3 py-2 rounded-md border-2 border-black/60 bg-black/25 text-white/90 font-black"
                             >
                                 <option value="neon">Neon</option>
                                 <option value="emerald">Emerald</option>
@@ -39,7 +39,7 @@ export default function TopNav({ user, accent, setAccent, onLogout }) {
                         ) : null}
                         <button
                             onClick={onLogout}
-                            className="px-4 py-2 rounded-lg font-semibold text-white bg-gradient-to-r from-pink-600 to-red-600 hover:from-pink-500 hover:to-red-500 shadow-md"
+                            className="mc-btn mc-btn-red"
                         >
                             Logout
                         </button>

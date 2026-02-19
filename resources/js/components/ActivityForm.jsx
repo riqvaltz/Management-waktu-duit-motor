@@ -17,24 +17,24 @@ export default function ActivityForm({ isOpen, onClose, onSubmit, initialValue }
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity">
-            <div className="w-full max-w-md p-6 rounded-2xl shadow-xl ring-1 ring-slate-800 bg-slate-900/70 transform transition-all animate-in fade-in zoom-in duration-200">
-                <h2 className="text-xl font-bold mb-4 text-slate-100">{initialValue?.id ? 'Edit Kegiatan' : 'Tambah Kegiatan'}</h2>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 backdrop-blur-[1px] transition-opacity">
+            <div className="w-full max-w-md p-6 mc-panel transform transition-all animate-in fade-in zoom-in duration-200">
+                <h2 className="text-xl font-black mb-4 mc-title">{initialValue?.id ? 'Edit Kegiatan' : 'Tambah Kegiatan'}</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-slate-300">Judul</label>
+                        <label className="block text-sm font-black mc-muted">Judul</label>
                         <input
                             type="text"
                             name="title"
                             required
                             defaultValue={initialValue?.title || ''}
                             placeholder="Contoh: Nyapu"
-                            className="mt-1 block w-full rounded-md border border-slate-700 bg-slate-800 text-slate-100 shadow-sm p-2 focus:border-cyan-500 focus:ring-cyan-500 outline-none"
+                            className="mt-1 mc-input"
                         />
                     </div>
                     <div className="grid grid-cols-2 gap-3">
                         <div>
-                            <label className="block text-sm font-medium text-slate-300">Mulai</label>
+                            <label className="block text-sm font-black mc-muted">Mulai</label>
                             <input
                                 type="text"
                                 inputMode="numeric"
@@ -44,11 +44,11 @@ export default function ActivityForm({ isOpen, onClose, onSubmit, initialValue }
                                 placeholder="10:00"
                                 pattern={timePattern}
                                 title="Format 24 jam: HH:MM (contoh 10:00)"
-                                className="mt-1 block w-full rounded-md border border-slate-700 bg-slate-800 text-slate-100 shadow-sm p-2 focus:border-cyan-500 focus:ring-cyan-500 outline-none"
+                                className="mt-1 mc-input"
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-slate-300">Selesai</label>
+                            <label className="block text-sm font-black mc-muted">Selesai</label>
                             <input
                                 type="text"
                                 inputMode="numeric"
@@ -58,25 +58,25 @@ export default function ActivityForm({ isOpen, onClose, onSubmit, initialValue }
                                 placeholder="11:00"
                                 pattern={timePattern}
                                 title="Format 24 jam: HH:MM (contoh 11:00)"
-                                className="mt-1 block w-full rounded-md border border-slate-700 bg-slate-800 text-slate-100 shadow-sm p-2 focus:border-cyan-500 focus:ring-cyan-500 outline-none"
+                                className="mt-1 mc-input"
                             />
                         </div>
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-slate-300">Catatan</label>
+                        <label className="block text-sm font-black mc-muted">Catatan</label>
                         <textarea
                             name="notes"
                             rows={3}
                             defaultValue={initialValue?.notes || ''}
                             placeholder="Opsional..."
-                            className="mt-1 block w-full rounded-md border border-slate-700 bg-slate-800 text-slate-100 shadow-sm p-2 focus:border-cyan-500 focus:ring-cyan-500 outline-none"
+                            className="mt-1 mc-input"
                         />
                     </div>
                     <div className="flex justify-end gap-2 mt-6">
-                        <button type="button" onClick={onClose} className="px-4 py-2 text-slate-300 hover:bg-slate-800 rounded-md transition-colors">
+                        <button type="button" onClick={onClose} className="mc-btn">
                             Batal
                         </button>
-                        <button type="submit" className="px-4 py-2 text-white rounded-md bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-500 hover:to-blue-600 transition-colors">
+                        <button type="submit" className="mc-btn mc-btn-blue">
                             Simpan
                         </button>
                     </div>

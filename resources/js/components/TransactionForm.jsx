@@ -15,52 +15,52 @@ export default function TransactionForm({ isOpen, onClose, onSubmit }) {
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity">
-            <div className="w-full max-w-md p-6 rounded-2xl shadow-xl ring-1 ring-slate-800 bg-slate-900/70 transform transition-all animate-in fade-in zoom-in duration-200">
-                <h2 className="text-xl font-bold mb-4 text-slate-100">Tambah Transaksi</h2>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 backdrop-blur-[1px] transition-opacity">
+            <div className="w-full max-w-md p-6 mc-panel transform transition-all animate-in fade-in zoom-in duration-200">
+                <h2 className="text-xl font-black mb-4 mc-title">Tambah Transaksi</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-slate-300">Jenis</label>
-                        <select name="type" className="mt-1 block w-full rounded-md border border-slate-700 bg-slate-800 text-slate-100 shadow-sm p-2 focus:border-cyan-500 focus:ring-cyan-500 outline-none">
+                        <label className="block text-sm font-black mc-muted">Jenis</label>
+                        <select name="type" className="mt-1 mc-input">
                             <option value="income">Pemasukan</option>
                             <option value="expense">Pengeluaran</option>
                             <option value="initial_balance">Saldo Awal</option>
                         </select>
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-slate-300">Nominal (Rp)</label>
+                        <label className="block text-sm font-black mc-muted">Nominal (Rp)</label>
                         <input 
                             type="number" 
                             name="amount" 
                             required 
                             min="0"
                             placeholder="0"
-                            className="mt-1 block w-full rounded-md border border-slate-700 bg-slate-800 text-slate-100 shadow-sm p-2 focus:border-cyan-500 focus:ring-cyan-500 outline-none" 
+                            className="mt-1 mc-input" 
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-slate-300">Keterangan</label>
+                        <label className="block text-sm font-black mc-muted">Keterangan</label>
                         <input 
                             type="text" 
                             name="description" 
                             placeholder="Contoh: Makan Siang"
-                            className="mt-1 block w-full rounded-md border border-slate-700 bg-slate-800 text-slate-100 shadow-sm p-2 focus:border-cyan-500 focus:ring-cyan-500 outline-none" 
+                            className="mt-1 mc-input" 
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-slate-300">Kategori</label>
+                        <label className="block text-sm font-black mc-muted">Kategori</label>
                         <input 
                             type="text" 
                             name="category" 
                             placeholder="Contoh: Food"
-                            className="mt-1 block w-full rounded-md border border-slate-700 bg-slate-800 text-slate-100 shadow-sm p-2 focus:border-cyan-500 focus:ring-cyan-500 outline-none" 
+                            className="mt-1 mc-input" 
                         />
                     </div>
                     <div className="flex justify-end gap-2 mt-6">
-                        <button type="button" onClick={onClose} className="px-4 py-2 text-slate-300 hover:bg-slate-800 rounded-md transition-colors">
+                        <button type="button" onClick={onClose} className="mc-btn">
                             Batal
                         </button>
-                        <button type="submit" className="px-4 py-2 text-white rounded-md bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-500 hover:to-blue-600 transition-colors">
+                        <button type="submit" className="mc-btn mc-btn-blue">
                             Simpan
                         </button>
                     </div>

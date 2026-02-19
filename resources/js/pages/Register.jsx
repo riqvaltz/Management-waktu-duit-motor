@@ -22,45 +22,45 @@ export default function Register() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-gray-900 to-black p-4">
+        <div className="mc-world flex items-center justify-center p-4">
             <motion.div 
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
-                className="bg-slate-900/80 text-slate-100 backdrop-blur-xl p-8 rounded-2xl shadow-2xl w-full max-w-lg border border-slate-800"
+                className="mc-panel p-8 w-full max-w-lg"
             >
                 <div className="text-center mb-8">
-                    <h1 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
-                        Join the Hype!
+                    <h1 className="text-4xl font-black mc-title">
+                        Start Your Adventure!
                     </h1>
-                    <p className="text-slate-400 mt-2 font-medium">Mulai perjalanan finansialmu yang luar biasa! 🔥</p>
+                    <p className="mc-muted mt-2 font-black">Buat akun dan mulai petualangan finansialmu.</p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-bold text-slate-300 mb-1">Nama Lengkap</label>
-                            <input type="text" name="name" className="w-full px-4 py-3 rounded-lg border border-slate-700 bg-slate-800 placeholder-slate-500 focus:ring-2 focus:ring-emerald-300 outline-none" placeholder="John Doe" required />
+                            <label className="block text-sm font-black mc-muted mb-1">Nama Lengkap</label>
+                            <input type="text" name="name" className="mc-input" placeholder="John Doe" required />
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-slate-300 mb-1">Username</label>
-                            <input type="text" name="username" className="w-full px-4 py-3 rounded-lg border border-slate-700 bg-slate-800 placeholder-slate-500 focus:ring-2 focus:ring-emerald-300 outline-none" placeholder="johndoe" required />
+                            <label className="block text-sm font-black mc-muted mb-1">Username</label>
+                            <input type="text" name="username" className="mc-input" placeholder="johndoe" required />
                         </div>
                     </div>
 
                     <div>
-                        <label className="block text-sm font-bold text-slate-300 mb-1">Email</label>
-                        <input type="email" name="email" className="w-full px-4 py-3 rounded-lg border border-slate-700 bg-slate-800 placeholder-slate-500 focus:ring-2 focus:ring-emerald-300 outline-none" placeholder="john@example.com" required />
+                        <label className="block text-sm font-black mc-muted mb-1">Email</label>
+                        <input type="email" name="email" className="mc-input" placeholder="john@example.com" required />
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-bold text-slate-300 mb-1">Password</label>
-                            <input type="password" name="password" className="w-full px-4 py-3 rounded-lg border border-slate-700 bg-slate-800 placeholder-slate-500 focus:ring-2 focus:ring-emerald-300 outline-none" placeholder="••••••••" required />
+                            <label className="block text-sm font-black mc-muted mb-1">Password</label>
+                            <input type="password" name="password" className="mc-input" placeholder="••••••••" required />
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-slate-300 mb-1">Confirm Password</label>
-                            <input type="password" name="password_confirmation" className="w-full px-4 py-3 rounded-lg border border-slate-700 bg-slate-800 placeholder-slate-500 focus:ring-2 focus:ring-emerald-300 outline-none" placeholder="••••••••" required />
+                            <label className="block text-sm font-black mc-muted mb-1">Confirm Password</label>
+                            <input type="password" name="password_confirmation" className="mc-input" placeholder="••••••••" required />
                         </div>
                     </div>
 
@@ -68,15 +68,15 @@ export default function Register() {
                         whileHover={{ scale: 1.02, boxShadow: "0 10px 25px -5px rgba(249, 115, 22, 0.4)" }}
                         whileTap={{ scale: 0.98 }}
                         type="submit" 
-                        className="w-full py-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-black text-lg rounded-xl shadow-lg mt-4"
+                        className="w-full mc-btn mc-btn-green mt-4"
                     >
-                        DAFTAR SEKARANG 🚀
+                        DAFTAR SEKARANG
                     </motion.button>
                 </form>
 
-                <p className="mt-6 text-center text-slate-400">
+                <p className="mt-6 text-center mc-muted font-black">
                     Sudah punya akun?{' '}
-                    <Link to="/login" className="text-emerald-400 font-bold hover:underline">
+                    <Link to="/login" className="mc-link">
                         Login disini
                     </Link>
                 </p>

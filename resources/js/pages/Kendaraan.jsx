@@ -180,22 +180,22 @@ export default function Kendaraan() {
             right={
                 <button
                     onClick={openCreate}
-                    className="px-4 py-2 rounded-2xl text-white bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-500 hover:to-blue-600 shadow transition-transform active:scale-[0.98]"
+                    className="mc-btn mc-btn-blue"
                 >
                     + Tambah Kendaraan
                 </button>
             }
         >
             {loading ? (
-                <div className="mm-elevate rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_-60px_rgba(0,0,0,0.9)] overflow-hidden">
+                <div className="mm-elevate mc-panel overflow-hidden">
                     <div className="flex justify-center items-center h-64">
-                        <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-cyan-400"></div>
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-white/80"></div>
                     </div>
                 </div>
             ) : (
                 <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                     {sorted.length === 0 ? (
-                        <div className="mm-elevate p-6 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_-60px_rgba(0,0,0,0.9)] text-slate-300">
+                        <div className="mm-elevate p-6 mc-panel text-white/85">
                             Belum ada kendaraan. Klik “Tambah Kendaraan”.
                         </div>
                     ) : (
@@ -206,11 +206,11 @@ export default function Kendaraan() {
                                 ? "bg-rose-500/15 text-rose-300 ring-1 ring-rose-700/40"
                                 : "bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-700/40";
                             return (
-                                <div key={v.id} className="mm-elevate p-6 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_-60px_rgba(0,0,0,0.9)] space-y-4">
+                                <div key={v.id} className="mm-elevate p-6 mc-panel space-y-4">
                                     <div className="flex justify-between gap-4">
                                         <div className="min-w-0">
-                                            <div className="text-lg font-bold text-slate-100 truncate">{v.brand} {v.model}</div>
-                                            <div className="text-sm text-slate-400">Tahun {v.year}</div>
+                                            <div className="text-lg font-black mc-title truncate">{v.brand} {v.model}</div>
+                                            <div className="text-sm mc-muted">Tahun {v.year}</div>
                                         </div>
                                         <span className={clsx("h-fit text-[11px] px-2 py-1 rounded-full whitespace-nowrap", badgeClass)}>
                                             {badgeText}
@@ -218,22 +218,22 @@ export default function Kendaraan() {
                                     </div>
 
                                     <div className="grid grid-cols-2 gap-3">
-                                        <div className="p-3 rounded-2xl ring-1 ring-white/10 bg-black/25">
-                                            <div className="text-xs text-slate-400">KM Saat Ini</div>
-                                            <div className="text-xl font-bold text-slate-100">{v.current_km}</div>
+                                        <div className="p-3 mc-panel-inner">
+                                            <div className="text-xs mc-muted">KM Saat Ini</div>
+                                            <div className="text-xl font-black mc-title">{v.current_km}</div>
                                         </div>
-                                        <div className="p-3 rounded-2xl ring-1 ring-white/10 bg-black/25">
-                                            <div className="text-xs text-slate-400">KM Sejak Ganti Oli</div>
-                                            <div className="text-xl font-bold text-slate-100">{v.km_since_oil}</div>
+                                        <div className="p-3 mc-panel-inner">
+                                            <div className="text-xs mc-muted">KM Sejak Ganti Oli</div>
+                                            <div className="text-xl font-black mc-title">{v.km_since_oil}</div>
                                         </div>
                                     </div>
 
-                                    <div className="rounded-2xl ring-1 ring-white/10 bg-black/25 p-3">
-                                        <div className="flex justify-between text-xs text-slate-400 mb-2">
+                                    <div className="mc-panel-inner p-3">
+                                        <div className="flex justify-between text-xs mc-muted mb-2">
                                             <span>Interval: {v.oil_interval_km} km</span>
                                             <span>{Math.round(progress * 100)}%</span>
                                         </div>
-                                        <div className="h-2 rounded-full bg-white/10 overflow-hidden">
+                                        <div className="h-2 rounded-full bg-black/40 overflow-hidden border-2 border-black/60">
                                             <div
                                                 className={clsx("h-2", v.oil_due ? "bg-rose-500" : "bg-emerald-500")}
                                                 style={{ width: `${Math.min(100, Math.round(progress * 100))}%` }}
@@ -244,31 +244,31 @@ export default function Kendaraan() {
                                     <div className="flex flex-wrap gap-2">
                                         <button
                                             onClick={() => updateKm(v)}
-                                            className="px-3 py-2 rounded-2xl text-white bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-500 hover:to-blue-600 transition-transform active:scale-[0.98]"
+                                            className="mc-btn mc-btn-blue"
                                         >
                                             Update KM
                                         </button>
                                         <button
                                             onClick={() => markOilChanged(v)}
-                                            className="px-3 py-2 rounded-2xl text-white bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 transition-transform active:scale-[0.98]"
+                                            className="mc-btn mc-btn-green"
                                         >
                                             Sudah Ganti Oli
                                         </button>
                                         <button
                                             onClick={() => toggleMaintenance(v)}
-                                            className="px-3 py-2 rounded-2xl text-slate-200 border border-white/10 bg-white/5 hover:bg-white/10 transition-transform active:scale-[0.98]"
+                                            className="mc-btn"
                                         >
                                             {openMaintenance[v.id] ? 'Tutup Perawatan' : 'Lihat Perawatan'}
                                         </button>
                                         <button
                                             onClick={() => openEdit(v)}
-                                            className="px-3 py-2 rounded-2xl text-slate-200 border border-white/10 bg-white/5 hover:bg-white/10 transition-transform active:scale-[0.98]"
+                                            className="mc-btn"
                                         >
                                             Edit
                                         </button>
                                         <button
                                             onClick={() => handleDelete(v.id)}
-                                            className="px-3 py-2 rounded-2xl text-white bg-gradient-to-r from-pink-600 to-red-600 hover:from-pink-500 hover:to-red-500 transition-transform active:scale-[0.98]"
+                                            className="mc-btn mc-btn-red"
                                         >
                                             Hapus
                                         </button>
@@ -276,47 +276,47 @@ export default function Kendaraan() {
 
                                     {openMaintenance[v.id] ? (
                                         <div className="pt-2">
-                                            <div className="text-sm font-bold text-slate-200 mb-2">Perawatan Motor Matic</div>
+                                            <div className="text-sm font-black mc-title mb-2">Perawatan Motor Matic</div>
                                             {maintenanceLoading[v.id] ? (
-                                                <div className="text-sm text-slate-400">Memuat...</div>
+                                                <div className="text-sm mc-muted">Memuat...</div>
                                             ) : (
                                                 <div className="space-y-2">
                                                     {(maintenanceByVehicle[v.id]?.items || []).map(item => {
                                                         const badgeText = !item.enabled ? 'Nonaktif' : item.due ? 'Wajib ganti' : `Sisa ${item.km_remaining} km`;
                                                         const badgeClass = !item.enabled
-                                                            ? "bg-slate-500/15 text-slate-300 ring-1 ring-slate-700/40"
+                                                            ? "bg-yellow-300 text-black border-2 border-black/60"
                                                             : item.due
-                                                                ? "bg-rose-500/15 text-rose-300 ring-1 ring-rose-700/40"
-                                                                : "bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-700/40";
+                                                                ? "bg-rose-500/30 text-rose-100 border-2 border-black/60"
+                                                                : "bg-emerald-500/30 text-emerald-100 border-2 border-black/60";
                                                         return (
-                                                            <div key={item.id} className="p-3 rounded-2xl ring-1 ring-white/10 bg-black/25 flex justify-between gap-3">
+                                                            <div key={item.id} className="p-3 mc-panel-inner flex justify-between gap-3">
                                                                 <div className="min-w-0">
                                                                     <div className="flex items-center gap-2 flex-wrap">
-                                                                        <div className="font-semibold text-slate-100">{item.name}</div>
-                                                                        <span className={clsx("text-[11px] px-2 py-0.5 rounded-full whitespace-nowrap", badgeClass)}>
+                                                                        <div className="font-black mc-title">{item.name}</div>
+                                                                        <span className={clsx("text-[11px] px-2 py-0.5 rounded-md font-black whitespace-nowrap", badgeClass)}>
                                                                             {badgeText}
                                                                         </span>
                                                                     </div>
-                                                                    <div className="text-xs text-slate-400 mt-1">
+                                                                    <div className="text-xs mc-muted mt-1">
                                                                         Interval {item.interval_km} km • Terakhir di KM {item.last_service_km} • Jalan {item.km_since_service} km
                                                                     </div>
                                                                 </div>
                                                                 <div className="flex flex-wrap gap-2 justify-end">
                                                                     <button
                                                                         onClick={() => markMaintenanceDone(v.id, item.id)}
-                                                                        className="px-3 py-2 rounded-2xl text-white bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600"
+                                                                        className="mc-btn mc-btn-green"
                                                                     >
                                                                         Tandai Diganti
                                                                     </button>
                                                                     <button
                                                                         onClick={() => updateMaintenanceInterval(v.id, item.id, item.interval_km)}
-                                                                        className="px-3 py-2 rounded-2xl text-slate-200 border border-white/10 bg-white/5 hover:bg-white/10"
+                                                                        className="mc-btn"
                                                                     >
                                                                         Ubah Interval
                                                                     </button>
                                                                     <button
                                                                         onClick={() => toggleMaintenanceEnabled(v.id, item.id, !item.enabled)}
-                                                                        className="px-3 py-2 rounded-2xl text-slate-200 border border-white/10 bg-white/5 hover:bg-white/10"
+                                                                        className="mc-btn"
                                                                     >
                                                                         {item.enabled ? 'Nonaktifkan' : 'Aktifkan'}
                                                                     </button>
@@ -325,7 +325,7 @@ export default function Kendaraan() {
                                                         );
                                                     })}
                                                     {maintenanceByVehicle[v.id]?.items?.some(i => i.enabled && i.due) ? (
-                                                        <div className="text-sm font-semibold text-rose-300">
+                                                        <div className="text-sm font-black text-rose-200">
                                                             Silahkan ganti oli/part yang sudah lewat interval.
                                                         </div>
                                                     ) : null}

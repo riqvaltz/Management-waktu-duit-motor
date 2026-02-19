@@ -79,7 +79,7 @@ export default function Dashboard() {
             right={
                 <button
                     onClick={() => setIsModalOpen(true)}
-                    className="px-4 py-2 rounded-2xl text-white bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-500 hover:to-blue-600 shadow transition-transform active:scale-[0.98]"
+                    className="mc-btn mc-btn-blue"
                 >
                     + Tambah Transaksi
                 </button>
@@ -91,20 +91,20 @@ export default function Dashboard() {
                     animate={{ x: 0, opacity: 1 }}
                     className="xl:col-span-4 space-y-6"
                 >
-                    <div className="mm-elevate rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_-60px_rgba(0,0,0,0.9)] overflow-hidden">
-                        <div className="p-5 border-b border-white/10">
-                            <div className="text-sm font-bold text-slate-100">Kalender</div>
-                            <div className="text-xs text-slate-400 mt-1">Pilih tanggal untuk transaksi hari itu.</div>
+                    <div className="mm-elevate mc-panel overflow-hidden">
+                        <div className="p-5 border-b border-black/50">
+                            <div className="text-sm font-black mc-title">Kalender</div>
+                            <div className="text-xs mc-muted mt-1">Pilih tanggal untuk transaksi hari itu.</div>
                         </div>
                         <div className="p-4">
                             <Calendar selectedDate={selectedDate} onDateSelect={setSelectedDate} />
                         </div>
                     </div>
 
-                    <div className="mm-elevate rounded-3xl border border-white/10 bg-gradient-to-br from-indigo-600/40 via-fuchsia-600/30 to-cyan-500/30 backdrop-blur-xl shadow-[0_20px_80px_-60px_rgba(0,0,0,0.9)] overflow-hidden">
+                    <div className="mm-elevate mc-panel overflow-hidden">
                         <div className="p-6">
-                            <div className="text-sm font-bold text-white/95">Tips</div>
-                            <div className="mt-2 text-sm text-white/85">Cukup konsisten 5 menit per hari untuk catat pemasukan/pengeluaran.</div>
+                            <div className="text-sm font-black mc-title">Tips</div>
+                            <div className="mt-2 text-sm mc-muted">Cukup konsisten 5 menit per hari untuk catat pemasukan/pengeluaran.</div>
                         </div>
                     </div>
 
@@ -116,19 +116,19 @@ export default function Dashboard() {
                     animate={{ x: 0, opacity: 1 }}
                     className="xl:col-span-8"
                 >
-                    <div className="mm-elevate rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_-60px_rgba(0,0,0,0.9)] overflow-hidden">
-                        <div className="p-5 border-b border-white/10 flex items-center justify-between gap-4 flex-wrap">
+                    <div className="mm-elevate mc-panel overflow-hidden">
+                        <div className="p-5 border-b border-black/50 flex items-center justify-between gap-4 flex-wrap">
                             <div className="min-w-0">
-                                <div className="text-sm font-bold text-slate-100">Ringkasan & Transaksi</div>
-                                <div className="text-xs text-slate-400 mt-1">{format(selectedDate, 'd MMMM yyyy')}</div>
+                                <div className="text-sm font-black mc-title">Ringkasan & Transaksi</div>
+                                <div className="text-xs mc-muted mt-1">{format(selectedDate, 'd MMMM yyyy')}</div>
                             </div>
-                            <div className="text-xs text-slate-400">Cari, filter, dan export CSV.</div>
+                            <div className="text-xs mc-muted">Cari, filter, dan export CSV.</div>
                         </div>
 
                         <div className="p-5">
                             {loading ? (
                                 <div className="flex justify-center items-center h-64">
-                                    <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-cyan-400"></div>
+                                    <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-white/80"></div>
                                 </div>
                             ) : (
                                 <DailyDashboard

@@ -80,16 +80,15 @@ export default function WibClockCard({
     return (
         <div
             className={clsx(
-                "rounded-3xl shadow-[0_20px_80px_-60px_rgba(0,0,0,0.9)] overflow-hidden border border-white/10",
-                bg ? "bg-slate-900" : "bg-gradient-to-br from-orange-500 via-orange-500 to-amber-500",
+                "mm-elevate mc-panel overflow-hidden",
                 className
             )}
             style={style}
         >
-            <div className="relative bg-black/30 backdrop-blur-[1px]">
+            <div className="relative bg-black/25 backdrop-blur-[1px]">
                 {allowBackgroundUpload ? (
                     <div className="absolute top-3 right-3 flex gap-2">
-                        <label className="px-2 py-1 rounded-md text-[11px] font-semibold bg-black/40 text-white/90 ring-1 ring-white/15 hover:bg-black/55 cursor-pointer">
+                        <label className="px-2 py-1 rounded-md text-[11px] font-black border-2 border-black/60 bg-black/25 text-white/90 hover:bg-black/35 cursor-pointer">
                             Ganti
                             <input
                                 type="file"
@@ -101,20 +100,20 @@ export default function WibClockCard({
                         <button
                             type="button"
                             onClick={resetBg}
-                            className="px-2 py-1 rounded-md text-[11px] font-semibold bg-black/40 text-white/90 ring-1 ring-white/15 hover:bg-black/55"
+                            className="px-2 py-1 rounded-md text-[11px] font-black border-2 border-black/60 bg-black/25 text-white/90 hover:bg-black/35"
                         >
                             Reset
                         </button>
                     </div>
                 ) : null}
-                <div className="px-5 pt-4 pb-3 text-center text-white/90 font-semibold tracking-wide">
+                <div className="px-5 pt-4 pb-3 text-center mc-title font-black tracking-wide">
                     {city}
                 </div>
                 <div className="px-5 pb-4 text-center text-white">
                     <div className="text-6xl leading-none font-light tabular-nums">
                         {time}
                     </div>
-                    <div className="mt-2 text-sm text-white/85">
+                    <div className="mt-2 text-sm mc-muted">
                         {date}
                     </div>
                 </div>
